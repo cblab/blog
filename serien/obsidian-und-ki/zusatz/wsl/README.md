@@ -23,7 +23,7 @@ pwd
 python3 --version
 ```
 
-Die Beispiele benötigen Python ab 3.10. Im Hauptordner der entpackten Repository-Kopie:
+Die Beispiele benötigen Python ab 3.10. Im Serienordner der entpackten Repository-Kopie:
 
 ```bash
 python3 02-kontext-router/router.py beispiele/umzug "Was ist beim Transport entschieden und was ist offen?"

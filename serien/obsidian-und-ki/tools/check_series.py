@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]
 PARTS = ('01-obsidian', '02-kontext-router', '03-gedaechtnis', '04-skills', '05-terminal')
 
 
@@ -31,8 +32,8 @@ def run(*args: str) -> str:
 
 def check_links() -> int:
     checked = 0
-    for path in ROOT.rglob('*.md'):
-        if '.git' in path.relative_to(ROOT).parts:
+    for path in [REPO_ROOT / 'README.md', *ROOT.rglob('*.md')]:
+        if '.git' in path.relative_to(REPO_ROOT).parts:
             continue
         text = re.sub(r'```.*?```', '', path.read_text(encoding='utf-8'), flags=re.S)
         for raw in re.findall(r'\[[^\]\n]+\]\(([^)\s]+)\)', text):
@@ -40,8 +41,8 @@ def check_links() -> int:
             if url.scheme or url.netloc or not url.path:
                 continue
             target = (path.parent / unquote(url.path)).resolve()
-            if not target.is_relative_to(ROOT) or not target.exists():
-                raise RuntimeError(f'Lokaler Link fehlt: {path.relative_to(ROOT)} -> {raw}')
+            if not target.is_relative_to(REPO_ROOT) or not target.exists():
+                raise RuntimeError(f'Lokaler Link fehlt: {path.relative_to(REPO_ROOT)} -> {raw}')
             checked += 1
     vault = ROOT / 'beispiele/umzug'
     notes = list(vault.rglob('*.md'))

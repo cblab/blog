@@ -1,6 +1,6 @@
 # Teil 2 – passende Notizen auswählen
 
-Alle Befehle aus dem Hauptordner dieses Pakets ausführen (nicht aus diesem Unterordner).
+Alle Befehle aus dem Serienordner dieses Pakets ausführen (nicht aus diesem Unterordner).
 
 Linux:
 

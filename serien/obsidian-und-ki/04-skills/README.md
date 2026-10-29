@@ -4,7 +4,7 @@ Dieser Ordner gehört zu Teil 4 der Serie.
 
 `skill_katalog.py` liest `SKILL.md` aus direkt untergeordneten Skill-Ordnern und schreibt `KATALOG.md` (eine Zeile pro Skill). Keine Modellaufrufe, keine Installation, keine automatische Auswahl. `name` und `description` müssen nicht leer und einzeilig im YAML-Kopf stehen. Kein vollständiger YAML-Parser.
 
-Alle Befehle aus dem Hauptordner ausführen.
+Alle Befehle aus dem Serienordner ausführen.
 
 Linux:
 

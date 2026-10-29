@@ -21,4 +21,4 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Tests, Leserbefehle und Verweise prüfen
-        run: python tools/check_series.py
+        run: python serien/obsidian-und-ki/tools/check_series.py

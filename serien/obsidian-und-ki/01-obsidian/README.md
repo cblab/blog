@@ -1,6 +1,6 @@
 # Teil 1 – das gemeinsame Notizbuch
 
-Öffne `beispiele/umzug` aus dem Hauptordner in Obsidian als Vault (Open folder as vault). Beginne mit `Start.md`. Alle Angaben sind erfunden. Drei Fachnotizen liegen in Quellen, Wissen und Entscheidungen; eine veraltete Notiz zeigt den Verlauf.
+Öffne `beispiele/umzug` aus dem Serienordner in Obsidian als Vault (Open folder as vault). Beginne mit `Start.md`. Alle Angaben sind erfunden. Drei Fachnotizen liegen in Quellen, Wissen und Entscheidungen; eine veraltete Notiz zeigt den Verlauf.
 
 Die Links in `[[...]]` verweisen auf die jeweiligen Dateinamen ohne Endung. Die YAML-Eigenschaften zwischen `---` werden in Obsidian als Eigenschaften dargestellt.
 

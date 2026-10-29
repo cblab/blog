@@ -2,7 +2,7 @@
 
 Das Skript `verfall.py` meldet abgelaufene, fehlende, ungültige oder lange zurückliegende Datumsangaben und einen Stand in der Zukunft. Es prüft **keine Inhalte**, versteht keine Widersprüche und ändert nichts.
 
-Alle Befehle aus dem Hauptordner ausführen.
+Alle Befehle aus dem Serienordner ausführen.
 
 Linux:
 

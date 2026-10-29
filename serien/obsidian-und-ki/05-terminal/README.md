@@ -6,7 +6,7 @@ Diese Anleitung und die beiliegende Konfiguration beziehen sich auf **OpenCode 1
 
 ## Eine Testkopie öffnen
 
-1. Kopiere `beispiele/umzug` aus dem Hauptordner dieses Repositorys in einen neuen, leeren Testordner außerhalb des Repositorys. Verwende für den ersten Versuch keine echten Dokumente.
+1. Kopiere `beispiele/umzug` aus dem Serienordner dieses Repositorys in einen neuen, leeren Testordner außerhalb des Repositorys. Verwende für den ersten Versuch keine echten Dokumente.
 2. Kopiere die beiliegende `opencode.json` ebenfalls in diesen Testordner. Überschreibe keine vorhandene Konfiguration.
 3. Installiere OpenCode nach der [offiziellen Anleitung](https://opencode.ai/docs/) für dein Betriebssystem, falls es noch nicht installiert ist.
 4. Öffne ein Terminal im Testordner und starte `opencode`.

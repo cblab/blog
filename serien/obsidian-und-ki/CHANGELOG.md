@@ -2,6 +2,8 @@
 
 ## 29.10.2026 – Neuaufbau für die fünfteilige Serie
 
+Die vollständige Reihe liegt unter `serien/obsidian-und-ki/`. Die Repository-Wurzel bleibt für weitere Artikel und Serien frei. Befehle zu dieser Serie werden im Serienordner ausgeführt.
+
 ### Neu
 
 - Gemeinsamer Umzugs-Vault für alle fünf Teile, Einstieg ohne Terminal und optionale WSL-Anleitung.
