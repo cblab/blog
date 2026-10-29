@@ -40,7 +40,7 @@ def main():
             continue
         thema = relativ.parent.name or "Allgemein"
         stand = datetime.fromtimestamp(datei.stat().st_mtime).date().isoformat()
-        kopf = "---\nTitel: %s\nThema: %s\nStatus: zu prüfen\nStand: \nKurz: \nQuelle: %s\nImportiert am: %s\nQuelldatei geändert am: %s\n---\n\n" % (datei.stem, thema, relativ, date.today().isoformat(), stand)
+        kopf = "---\nTitel: %s\nThema: %s\nStatus: zu prüfen\nStand: \nKurz: \nQuelle: %s\nImportiert am: %s\nQuelldatei geändert am: %s\n---\n\n" % (datei.stem, thema, relativ.as_posix(), date.today().isoformat(), stand)
         notiz.parent.mkdir(parents=True, exist_ok=True)
         notiz.write_text(kopf + text.strip() + "\n", encoding="utf-8")
         ok += 1
