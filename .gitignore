@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+06-skill-first/beispiel-skills/KATALOG.md
