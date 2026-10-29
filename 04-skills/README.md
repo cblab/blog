@@ -25,7 +25,7 @@ Der Katalog liegt anschließend in `04-skills/beispiel-skills/KATALOG.md`.
 | Anfrage an eine Transporterfirma entwerfen | brief-schreiben |
 | Tabellensummen prüfen | tabelle-pruefen |
 | Sitzungsprotokoll schreiben | keiner |
-| Eine Gartennotiz nachlesen | keiner |
+| Transportbeschluss aus einer Notiz nachlesen | keiner |
 
 Zuerst nur Katalog und Aufgabe zur Auswahl übergeben. Danach den Inhalt der passenden Anleitung und die Faktennotizen laden. Keine Anleitung erzwingen, wenn sie nicht passt. Ein Skill enthält Anweisungen, keine Faktenbestätigung und keine technischen Berechtigungen. Das Kopieren in einen beliebigen Ordner bewirkt keine automatische Erkennung in jedem Assistenten.
 
