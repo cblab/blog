@@ -13,9 +13,11 @@
 
 - Skills gehören zu Teil 4: `06-skill-first` wird `04-skills`. Befehle und Artikelverweise verwenden den neuen Pfad.
 - Router, Datumsprüfung und Import verstehen den gemeinsamen Notizkopf. Importstatus ist „zu prüfen“, das Inhaltsprüfdatum bleibt zunächst leer.
-- Garten-Vault und Vorlagen bleiben als zusätzliche Beispiele erhalten. Alte Versicherungs-/Haushaltsnotizen liegen nur noch unter `02-kontext-router/tests/fixtures/notizen`.
+- Alle Leserübungen verwenden denselben Umzugs-Vault. Alte Versicherungs-/Haushaltsnotizen liegen nur noch unter `02-kontext-router/tests/fixtures/notizen`.
 
 ### Weggefallen
+
+- Der zweite Garten-Vault und die persönlichen Vorlagennotizen: Sie führten ein weiteres Thema ein, ohne einen zusätzlichen Arbeitsschritt der Serie zu zeigen. Ältere Fassungen bleiben in der Git-Historie verfügbar.
 
 - Die alte Sechsergliederung und die alleinige Bereitstellung der neuen Beispiele als WordPress-ZIP. Frühere Fassungen bleiben in der Git-Historie erhalten.
 

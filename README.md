@@ -59,7 +59,7 @@ Router und Datumsprüfung lesen nur. Der Skill-Katalog schreibt `KATALOG.md` im 
 ```text
 01-obsidian/         Einstieg und erste Chatübung
 02-kontext-router/   Wortsuche und optionaler Dokumentimport
-03-gedaechtnis/      Datumsprüfung, Vorlagen, zusätzlicher Garten-Vault
+03-gedaechtnis/      Datumsprüfung am gemeinsamen Beispiel
 04-skills/           Katalog und zwei Beispielanleitungen
 05-terminal/         Optionale OpenCode-1-Leseübung
 beispiele/umzug/     Gemeinsamer fiktiver Vault

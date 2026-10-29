@@ -8,19 +8,19 @@ Linux:
 
 ```bash
 python3 03-gedaechtnis/verfall.py beispiele/umzug
-python3 03-gedaechtnis/verfall.py 03-gedaechtnis/beispiel-garten 90
+python3 03-gedaechtnis/verfall.py beispiele/umzug 90
 ```
 
 Windows PowerShell:
 
 ```powershell
 py 03-gedaechtnis\verfall.py beispiele\umzug
-py 03-gedaechtnis\verfall.py 03-gedaechtnis\beispiel-garten 90
+py 03-gedaechtnis\verfall.py beispiele\umzug 90
 ```
 
 Die letzte Zahl ist die gewählte Altersgrenze in Tagen, Standard 180; keine fachlich garantierte Gültigkeitsdauer. `Stand` bezeichnet letzte Inhaltsprüfung. `Gilt bis` ist optional. Format JJJJ-MM-TT. `veraltet` wird übersprungen. Pro Datei wird der erste passende Prüfhinweis ausgegeben; nach Korrektur erneut laufen lassen. Alte Köpfe ohne YAML-Trennlinien bleiben unterstützt.
 
-`vorlagen/` enthält die bestehenden Startvorlagen (Über mich, Regeln, Entscheidungen). `beispiel-garten/` ist der erhaltene zweite Beispiel-Vault: in Obsidian öffnen, von Tomaten nach Beet 4 und zur veralteten Standortnotiz gehen. Alles sind fiktive Beispieldaten, keine Gartenbauempfehlung. Der Graph stellt Links dar, weder Aktualität noch Wahrheit.
+Die gemeinsame [aktuelle Kündigungsnotiz](../beispiele/umzug/Wissen/Alte%20Wohnung%20Kündigung.md) und der [alte Stand](../beispiele/umzug/Wissen/Kündigung%20alter%20Stand.md) zeigen den Unterschied zwischen „zu prüfen“ und „veraltet“. Auch ein neueres Datum bestätigt die fiktive Kündigungsfrist nicht. Prüfe die Quelle und kennzeichne offene Angaben, bevor du eine Notiz als gültig verwendest.
 
 ## Tests
 

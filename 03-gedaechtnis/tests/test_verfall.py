@@ -36,9 +36,9 @@ class DatumTest(unittest.TestCase):
 
 class KopfTest(unittest.TestCase):
     def test_liest_schluessel_kleingeschrieben(self):
-        kopf = verfall.kopf(HIER / "beispiel-garten" / "Tomaten in Beet 2 (alt).md")
+        kopf = verfall.kopf(HIER.parent / "beispiele" / "umzug" / "Wissen" / "Kündigung alter Stand.md")
         self.assertEqual(kopf["status"], "veraltet")
-        self.assertEqual(kopf["gilt bis"], "2026-03-31")
+        self.assertEqual(kopf["stand"], "2026-10-29")
 
 class MeldungenTest(unittest.TestCase):
     def setUp(self):
@@ -83,8 +83,8 @@ class MeldungenTest(unittest.TestCase):
         self.assertIn("Alles in Ordnung", lauf(self.ordner))
 
     def test_beispielordner_meldet_nur_nicht_veraltetes(self):
-        ausgabe = lauf(HIER / "beispiel-garten")
-        self.assertNotIn("Tomaten in Beet 2 (alt).md", ausgabe)
+        ausgabe = lauf(HIER.parent / "beispiele" / "umzug")
+        self.assertNotIn("Kündigung alter Stand.md", ausgabe)
 
 class SerienKopfTest(unittest.TestCase):
     def test_yaml_kopf_darf_mehr_als_acht_zeilen_haben(self):
