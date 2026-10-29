@@ -36,7 +36,7 @@ class DatumTest(unittest.TestCase):
 
 class KopfTest(unittest.TestCase):
     def test_liest_schluessel_kleingeschrieben(self):
-        kopf = verfall.kopf(HIER / "beispiel-garten" / "tomaten-beet-alt.md")
+        kopf = verfall.kopf(HIER / "beispiel-garten" / "Tomaten in Beet 2 (alt).md")
         self.assertEqual(kopf["status"], "veraltet")
         self.assertEqual(kopf["gilt bis"], "2026-03-31")
 
@@ -84,7 +84,20 @@ class MeldungenTest(unittest.TestCase):
 
     def test_beispielordner_meldet_nur_nicht_veraltetes(self):
         ausgabe = lauf(HIER / "beispiel-garten")
-        self.assertNotIn("tomaten-beet-alt.md", ausgabe)
+        self.assertNotIn("Tomaten in Beet 2 (alt).md", ausgabe)
+
+class SerienKopfTest(unittest.TestCase):
+    def test_yaml_kopf_darf_mehr_als_acht_zeilen_haben(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "notiz.md"
+            path.write_text("---\nTitel: Test\nThema: Test\nStatus: gilt\nKurz: Test\nQuelle: Beispiel\nAutor: Beispiel\nExtra: Beispiel\nStand: 2026-10-29\n---\nStand: 1900-01-01")
+            self.assertEqual(verfall.kopf(path)["stand"], "2026-10-29")
+
+    def test_ungueltiges_ablaufdatum_wird_gemeldet(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "notiz.md"
+            path.write_text("Stand: " + date.today().isoformat() + "\nGilt bis: morgen\n\nText")
+            self.assertIn("ungültiges Datum", lauf(tmp))
 
 if __name__ == "__main__":
     unittest.main()

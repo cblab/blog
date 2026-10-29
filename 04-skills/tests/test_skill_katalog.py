@@ -1,7 +1,8 @@
-"""Tests für skill_katalog.py. Start: python3 -m unittest discover -s 06-skill-first/tests -v"""
+"""Tests für skill_katalog.py. Start: python3 -m unittest discover -s 04-skills/tests -v"""
 import contextlib
 import io
 import sys
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -80,6 +81,17 @@ class KatalogTest(unittest.TestCase):
         text = (self.ordner / "KATALOG.md").read_text(encoding="utf-8")
         self.assertNotIn("halb", text)
 
+    def test_leere_beschreibung_wird_nicht_als_skill_aufgenommen(self):
+        skill(self.ordner, "leer", "---\nname: leer\ndescription:    \n---\n")
+        ausgabe = lauf(self.ordner)
+        self.assertIn("Kopf fehlt oder unvollständig", ausgabe)
+        self.assertNotIn("- leer:", (self.ordner / "KATALOG.md").read_text())
+
+    def test_fehlender_ordner_meldet_lesbaren_fehler(self):
+        with self.assertRaises(SystemExit) as fehler:
+            lauf(self.ordner / "fehlt")
+        self.assertIn("Skills-Ordner fehlt", str(fehler.exception))
+
     def test_zaehlt_die_geschriebenen_skills(self):
         skill(self.ordner, "a", "---\nname: a\ndescription: A\n---\n")
         skill(self.ordner, "b", "---\nname: b\ndescription: B\n---\n")
@@ -103,8 +115,10 @@ class KatalogTest(unittest.TestCase):
         self.assertNotEqual(fehler.exception.code, 0)
 
     def test_beispielskills_ergeben_katalog(self):
-        lauf(HIER / "beispiel-skills")
-        text = (HIER / "beispiel-skills" / "KATALOG.md").read_text(encoding="utf-8")
+        kopie = self.ordner / "beispiel-skills"
+        shutil.copytree(HIER / "beispiel-skills", kopie)
+        lauf(kopie)
+        text = (kopie / "KATALOG.md").read_text(encoding="utf-8")
         self.assertIn("- brief-schreiben:", text)
         self.assertIn("- tabelle-pruefen:", text)
 

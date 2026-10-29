@@ -1,70 +1,95 @@
-# Blog-Code-Beispiele
+# Obsidian und KI
 
-Lauffähige Beispiele zu den Artikeln auf christian-blab.com. Jeder Ordner gehört zu einem Artikel und enthält den vollständigen Code, Beispieldaten, eine kurze Anleitung und Unit-Tests.
+**Vom Notizbuch zum Assistenten.** Fünf aufeinander aufbauende Anleitungen mit einem gemeinsamen Umzugsbeispiel. Du beginnst mit drei Textdateien und kannst später Notizen gezielt auswählen, ihren Stand prüfen und wiederkehrende Aufgaben mit Skills bearbeiten.
 
-| Artikel | Ordner | Inhalt |
+Dieses GitHub-Repository ist die zentrale Quelle für die Beispiele und Anleitungen der Artikelserie auf [christian-blab.com](https://christian-blab.com). Die Blogartikel sind derzeit Entwürfe; ihre öffentlichen Links funktionieren nach der Veröffentlichung. Die Beispiele hier kannst du bereits verwenden.
+
+## Die fünf Teile
+
+| Teil | Anleitung und Material | Artikel |
 |---|---|---|
-| [Obsidian: Ein Notizbuch, das auch deine KI lesen kann](https://christian-blab.com/obsidian-als-wissensbasis-fuer-ki-agenten) | — | kein Code |
-| [Wie du einer KI nur die passenden Notizen gibst](https://christian-blab.com/warum-ki-agenten-einen-kontext-router-brauchen) | [`02-kontext-router/`](02-kontext-router/) | Notizen auswählen, Dateien nach Markdown umwandeln |
-| [Das Gedächtnis deiner KI gehört in Dateien](https://christian-blab.com/agent-memory-engineering) | [`03-gedaechtnis/`](03-gedaechtnis/) | Notizen mit Datum, Ablauf und Prüfskript |
-| [KI-Werkzeuge unter Windows einrichten: WSL](https://christian-blab.com/ki-agenten-windows-wsl-linux) | — | kein Code |
-| [Einen KI-Assistenten im Terminal einrichten](https://christian-blab.com/opencode-mcp-tmux-entwicklungsumgebung) | — | kein Code |
-| [Skills für KI: Anleitungen, die sie bei Bedarf selbst findet](https://christian-blab.com/skill-first-statt-prompt-first) | [`06-skill-first/`](06-skill-first/) | Skill-Katalog aus `SKILL.md`-Dateien bauen |
+| 1 | [Ein Notizbuch mit Obsidian anlegen](01-obsidian/README.md) | [zxz.nz/obsidian1](https://zxz.nz/obsidian1) |
+| 2 | [Passende Notizen auswählen](02-kontext-router/README.md) | [zxz.nz/obsidian2](https://zxz.nz/obsidian2) |
+| 3 | [Ein Gedächtnis pflegen](03-gedaechtnis/README.md) | [zxz.nz/obsidian3](https://zxz.nz/obsidian3) |
+| 4 | [Skills verwenden](04-skills/README.md) | [zxz.nz/obsidian4](https://zxz.nz/obsidian4) |
+| 5 | [Einen Assistenten im Terminal einrichten](05-terminal/README.md) | [zxz.nz/obsidian5](https://zxz.nz/obsidian5) |
 
-Die Links auf christian-blab.com gehen erst live, wenn der Blog die Artikel veröffentlicht hat. Bis dahin führen die Ordnerlinks im Repository zu den Beispielen.
+Nur bei Bedarf: [WSL unter Windows einrichten](zusatz/wsl/README.md). WSL ist für Obsidian und die Python-Beispiele unter Windows nicht erforderlich.
 
-## Voraussetzungen
+## Ohne Programmieren anfangen
 
-- Python ab Version 3.10 (nur Standardbibliothek, außer MarkItDown in `02`)
-- Windows: Python über `winget install Python.Python.3.12`, danach PowerShell neu öffnen
-- Linux (Ubuntu, Debian): `sudo apt install python3`
+1. Lade über **Code → Download ZIP** das Repository herunter und entpacke es. Alternativ: [ZIP herunterladen](https://github.com/cblab/blog/archive/refs/heads/main.zip).
+2. Öffne in Obsidian den Ordner [`beispiele/umzug`](beispiele/umzug/Start.md) als Vault („Open folder as vault“).
+3. Beginne mit `Start.md`. Sie verlinkt die drei Fachnotizen und eine alte Fassung zum Vergleich.
+4. Gib einem Chat nur die für deine Frage nötigen Texte. Der Chat kann den lokalen Ordner erst lesen, wenn du Inhalte übergibst oder ein entsprechendes Werkzeug eingerichtet hast.
 
-## Aufruf unter Linux
+Alle Angaben sind erfunden. Eine gute erste Frage: **Was ist beim Transport entschieden und was ist noch offen?** Ein Transporter ist vorgesehen, eine Ersparnis wird erwartet. Ein verbindliches Angebot, ein Buchungstermin und Helferzusagen fehlen. Die fiktive Kündigungsfrist ist ausdrücklich zu prüfen.
+
+## Die lokalen Skripte ausprobieren
+
+Python ab 3.10. Router, Datumsprüfung und Skill-Katalog brauchen nur die Standardbibliothek. Den Dokumentimport mit MarkItDown kannst du überspringen.
+
+Öffne das Terminal im **Hauptordner**, der diese README enthält. Ein GitHub-ZIP entpackt sich üblicherweise in `blog-main`. Wenn du Git verwendest:
 
 ```bash
-python3 02-kontext-router/router.py 02-kontext-router/beispieldaten/Notizen "Bis wann kann ich die Haftpflicht kündigen?"
-python3 03-gedaechtnis/verfall.py 03-gedaechtnis/beispiel-garten
-python3 06-skill-first/skill_katalog.py 06-skill-first/beispiel-skills
+git clone https://github.com/cblab/blog.git
+cd blog
 ```
 
-## Aufruf unter Windows (PowerShell)
+Unter Linux:
+
+```bash
+python3 02-kontext-router/router.py beispiele/umzug "Was ist beim Transport entschieden und was ist offen?"
+python3 03-gedaechtnis/verfall.py beispiele/umzug
+python3 04-skills/skill_katalog.py 04-skills/beispiel-skills
+```
+
+Unter Windows in PowerShell:
 
 ```powershell
-py 02-kontext-router\router.py 02-kontext-router\beispieldaten\Notizen "Bis wann kann ich die Haftpflicht kündigen?"
-py 03-gedaechtnis\verfall.py 03-gedaechtnis\beispiel-garten
-py 06-skill-first\skill_katalog.py 06-skill-first\beispiel-skills
+py 02-kontext-router\router.py beispiele\umzug "Was ist beim Transport entschieden und was ist offen?"
+py 03-gedaechtnis\verfall.py beispiele\umzug
+py 04-skills\skill_katalog.py 04-skills\beispiel-skills
 ```
 
-Jeder Ordner hat eine eigene `README.md` mit weiteren Beispielen, dem Aufruf für `umwandeln.py` und der Erklärung der Ausgabe.
+Router und Datumsprüfung lesen nur. Der Skill-Katalog schreibt `KATALOG.md` im angegebenen Skills-Ordner. Die drei Skripte rufen kein KI-Modell auf. Wenn du ihre Ausgabe an einen Cloud-Chat übergibst, werden die übergebenen Inhalte an dessen Anbieter gesendet.
 
-## Tests
+## Wie die Materialien zusammenpassen
+
+```text
+01-obsidian/         Einstieg und erste Chatübung
+02-kontext-router/   Wortsuche und optionaler Dokumentimport
+03-gedaechtnis/      Datumsprüfung, Vorlagen, zusätzlicher Garten-Vault
+04-skills/           Katalog und zwei Beispielanleitungen
+05-terminal/         Optionale OpenCode-1-Leseübung
+beispiele/umzug/     Gemeinsamer fiktiver Vault
+beispiele/unterlagen/ Eine kleine Quelle für den optionalen Import
+zusatz/wsl/          Windows-Zusatz
+tools/              Gemeinsame Prüfung
+```
+
+Die Notizeigenschaften sind überall gleich: `Titel`, `Thema`, `Status`, `Stand`, `Kurz`, `Quelle`. `Status` verwendet `gilt`, `zu prüfen` oder `veraltet`. `Stand` bezeichnet den Tag der letzten Inhaltsprüfung. Ein optionales `Gilt bis` bezeichnet eine zeitliche Grenze. Datumsformat: `JJJJ-MM-TT`. Die einfachen YAML-Köpfe sind keine automatische Wahrheitsprüfung.
+
+Die Router-Suche vergleicht Wortanfänge. Sie versteht keine Bedeutung und folgt keinen Obsidian-Links. Die Datumsprüfung gibt Pflegehinweise, prüft aber keine Inhalte. Ein Skill beschreibt einen Arbeitsablauf und erteilt keine technischen Rechte. Diese Grenzen gehören zu den Beispielen.
+
+## Alles lokal prüfen
 
 Linux:
 
 ```bash
-python3 -m unittest discover -s 02-kontext-router/tests -v
-python3 -m unittest discover -s 03-gedaechtnis/tests -v
-python3 -m unittest discover -s 06-skill-first/tests -v
+python3 tools/check_series.py
 ```
 
-Windows (PowerShell):
+Windows:
 
 ```powershell
-py -m unittest discover -s 02-kontext-router\tests -v
-py -m unittest discover -s 03-gedaechtnis\tests -v
-py -m unittest discover -s 06-skill-first\tests -v
+py tools\check_series.py
 ```
 
-Wenn `pytest` installiert ist, funktionieren auch folgende Befehle:
+Die Prüfung führt alle Unit-Tests aus, probiert die drei Befehle auf den mitgelieferten Daten aus und kontrolliert die lokalen Markdown-Verweise sowie die Links im gemeinsamen Vault. Sie benötigt keine Anbieterzugänge und installiert nichts. Schreibende Probeläufe verwenden temporäre Ordner. Der optionale Import wird mit einem Ersatz für MarkItDown getestet.
 
-```bash
-python3 -m pytest 02-kontext-router/tests 03-gedaechtnis/tests 06-skill-first/tests -q
-```
+Dieselbe Prüfung ist für GitHub Actions auf Ubuntu und Windows vorbereitet. Ob der jeweilige CI-Lauf bestanden hat, zeigt der Reiter **Actions**. Einen tatsächlichen OpenCode-Modelllauf oder eine WSL-Installation ersetzt diese Prüfung nicht.
 
-## Lizenz
+## Weiterverwenden
 
-MIT, siehe [LICENSE](LICENSE). Inhaber: Christian Blab, 2026.
-
-## Hinweis
-
-Die Beispiele arbeiten mit erfundenen Daten. Lege keine Passwörter, Zugangsdaten oder persönlichen Dokumente in Beispielordner.
+Code und Beispieldaten stehen unter [MIT](LICENSE). Das Graphbild aus dem Artikel hat eine eigene Lizenz und ist nicht Teil dieses Repositorys. Den [Neuaufbau und die geänderten Pfade](CHANGELOG.md) kannst du im Änderungsprotokoll nachlesen.

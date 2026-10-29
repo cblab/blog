@@ -10,7 +10,7 @@ HIER = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HIER))
 import router  # noqa: E402
 
-DATEN = HIER / "beispieldaten" / "Notizen"
+DATEN = HIER / "tests" / "fixtures" / "notizen"
 
 def lauf(ordner, frage, anzahl=None):
     argumente = ["router.py", str(ordner), frage] + ([str(anzahl)] if anzahl else [])
@@ -90,6 +90,27 @@ class AuswahlTest(unittest.TestCase):
             (tief / "x.md").write_text("Titel: Kürbissuppe\nStatus: gilt\n\nRezept mit Kürbis", encoding="utf-8")
             ausgabe = lauf(t, "Wie koche ich Kürbissuppe?")
         self.assertIn("x.md", ausgabe)
+
+class SerienVertragTest(unittest.TestCase):
+    def test_yaml_kopf_und_abgelaufene_notiz(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "alt.md").write_text("---\nTitel: Transport\nStatus: gilt\nGilt bis: 2000-01-01\n---\nTransport gebucht")
+            (root / "offen.md").write_text("---\nTitel: Transport\nStatus: zu prüfen\n---\nTransport noch offen")
+            output = lauf(root, "Transport")
+            self.assertNotIn("--- Notiz: alt.md", output)
+            self.assertIn("offen.md", output)
+            self.assertIn("unbestätigt", output)
+
+    def test_fliesstext_aendert_keinen_kopfstatus(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "notiz.md"
+            path.write_text("Titel: Transport\nStatus: gilt\n\nStatus: veraltet\nTransport")
+            self.assertEqual(router.lies_notiz(path)[1]["status"], "gilt")
+
+    def test_fehlender_ordner_wird_gemeldet(self):
+        with self.assertRaises(SystemExit):
+            lauf(Path("/nicht-vorhandenes-serienbeispiel"), "Transport")
 
 if __name__ == "__main__":
     unittest.main()

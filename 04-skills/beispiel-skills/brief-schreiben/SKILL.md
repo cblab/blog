@@ -7,13 +7,15 @@ description: Schreibt kurze, freundliche Briefe und Mails ohne Floskeln. Nutzen 
 
 ## Ablauf
 1. Frage nach, wenn Empfänger, Anlass oder gewünschte Handlung fehlen.
-2. Schreibe in dieser Reihenfolge: Anrede, ein Satz zum Anlass, die Bitte, Frist, Gruß.
-3. Halte den Brief unter 120 Wörtern.
+2. Übernimm Termine, Beträge und Zusagen nur aus den beigefügten Belegen. Fehlende Angaben als offen kennzeichnen oder gezielt nachfragen.
+3. Schreibe in dieser Reihenfolge: Anrede, Anlass, Bitte, gegebenenfalls belegte Frist, Gruß.
+4. Halte den Brief unter 120 Wörtern.
 
 ## Regeln
 - Keine Floskeln wie "hiermit möchte ich mich erlauben".
-- Eine Bitte pro Brief, mit klarer Frist.
-- Das Datum steht oben.
+- Eine klare Bitte pro Brief; keine Frist erfinden.
+- Zeige nur den Entwurf. Nichts selbst versenden oder zusagen.
+- Ein Datum nur verwenden, wenn es bekannt ist; andernfalls Platzhalter.
 
 ## Beispiel
 Betreff: Zählerstand Wohnung 3

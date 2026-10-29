@@ -28,10 +28,12 @@ def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     ordner = Path(sys.argv[1]).expanduser()
+    if not ordner.is_dir():
+        sys.exit("Skills-Ordner fehlt.")
     zeilen, fehler = [], []
     for datei in sorted(ordner.glob("*/SKILL.md")):
         werte = lies_kopf(datei)
-        if "name" in werte and "description" in werte:
+        if werte.get("name", "").strip() and werte.get("description", "").strip():
             zeilen.append("- %s: %s" % (werte["name"], werte["description"]))
         else:
             fehler.append(str(datei))

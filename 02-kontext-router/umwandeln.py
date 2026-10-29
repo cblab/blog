@@ -19,6 +19,10 @@ def main():
         sys.exit(__doc__)
     quelle = Path(sys.argv[1]).expanduser()
     ziel = Path(sys.argv[2]).expanduser()
+    if not quelle.is_dir():
+        sys.exit("Quellordner existiert nicht.")
+    if ziel.resolve() == quelle.resolve() or quelle.resolve() in ziel.resolve().parents:
+        sys.exit("Ziel muss außerhalb des Quellordners liegen.")
     umwandler = MarkItDown()
     ok, uebersprungen, fehler = 0, 0, []
     for datei in sorted(quelle.rglob("*")):
@@ -36,7 +40,7 @@ def main():
             continue
         thema = relativ.parent.name or "Allgemein"
         stand = datetime.fromtimestamp(datei.stat().st_mtime).date().isoformat()
-        kopf = "Titel: %s\nThema: %s\nStatus: gilt\nStand: %s\nKurz: \nQuelle: %s\n\n" % (datei.stem, thema, stand, relativ)
+        kopf = "---\nTitel: %s\nThema: %s\nStatus: zu prüfen\nStand: \nKurz: \nQuelle: %s\nImportiert am: %s\nQuelldatei geändert am: %s\n---\n\n" % (datei.stem, thema, relativ, date.today().isoformat(), stand)
         notiz.parent.mkdir(parents=True, exist_ok=True)
         notiz.write_text(kopf + text.strip() + "\n", encoding="utf-8")
         ok += 1
